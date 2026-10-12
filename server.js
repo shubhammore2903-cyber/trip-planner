@@ -111,16 +111,7 @@ function requireAuth(req, res, next) {
     res.json({ message: 'Logged in successfully!', user: req.session.user });
   });
 
-  app.post('/api/logout', (req, res) => {
-    req.session.destroy(() => res.json({ message: 'Logged out.' }));
-  });
-
-  app.get('/api/trips', requireAuth, (req, res) => {
-    res.json({ trips: all('SELECT * FROM trips WHERE user_id = ? ORDER BY id DESC', [req.session.user.id]) });
-  });
-
-  app.post('/api/trips', requireAuth, (req, res) => {
-    const destination = String(req.body.destination || '').trim();
+  app.get('/api/trips'
     const startDate = String(req.body.startDate || '').trim();
     const endDate = String(req.body.endDate || '').trim();
     const travelers = Math.min(20, Math.max(1, Number.parseInt(req.body.travelers, 10) || 1));
