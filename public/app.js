@@ -29,7 +29,111 @@ $('viewAll').addEventListener('click',e=>{e.preventDefault();$('destinationInput
 document.querySelectorAll('.card-action').forEach(btn=>btn.addEventListener('click',()=>{const name=btn.dataset.destination;$('destinationInput').value=name;$('itineraryTitle').textContent=name+' Adventure';$('itineraryMeta').textContent='5 Days · 4 Nights · '+$('travelers').selectedOptions[0].textContent;$('itinerary').scrollIntoView({behavior:'smooth'});showToast(name+' selected. Click Save This Trip to save it to your account.')}));
 $('viewItinerary').addEventListener('click',e=>{e.preventDefault();showToast('Sample itinerary: arrival, sightseeing, adventure, local visits and departure.')});
 $('myTripsBtn').addEventListener('click',async()=>{const user=await checkUser();if(!user){openAccount('login');return} $('myTripsSection').hidden=false;await loadTrips();$('myTripsSection').scrollIntoView({behavior:'smooth'})});
-async function loadTrips(){try{const data=await api('/api/trips');const box=$('savedTrips');box.innerHTML='';if(!data.trips.length){box.innerHTML='<p>You have not saved any trips yet. Choose a destination and click “Save This Trip”.</p>';return}data.trips.forEach(trip=>{const card=document.createElement('article');card.className='saved-trip';const title=document.createElement('h3');title.textContent='📍 '+trip.destination;const details=document.createElement('p');details.textContent=(trip.start_date||'Date not set')+' → '+(trip.end_date||'Return date not set')+' · '+trip.travelers+' traveler(s) · Budget ₹'+Number(trip.budget||0).toLocaleString('en-IN');const notes=document.createElement('p');notes.textContent=trip.notes||'No notes added.';const del=document.createElement('button');del.className='delete-trip';del.textContent='Delete trip';del.addEventListener('click',async()=>{try{await api('/api/trips/'+trip.id,{method:'DELETE'});showToast('Trip deleted.');await loadTrips()}catch(err){showToast(err.message)}});card.append(title,details,notes,del);box.appendChild(card)})}catch(err){showToast(err.message)}}
+```js
+async function loadTrips(){
+  try {
+    const data = await api('/api/trips');
+    const box = $('savedTrips');
+    box.innerHTML = '';
+
+    if (!data.trips || !data.trips.length) {
+      box.innerHTML = '<p>You have not saved any trips yet. Choose a destination and click “Save This Trip”.</p>';
+      return;
+    }
+
+    data.trips.forEach(trip => {
+      const card = document.createElement('article');
+      card.className = 'saved-trip';
+
+      const title = document.createElement('h3');
+      title.textContent = '📍 ' + trip.destination;
+
+      const details = document.createElement('p');
+      details.textContent =
+        '📅 Departure: ' + (trip.start_date || 'Not set') +
+        ' | Return: ' + (trip.end_date || 'Not set');
+
+      const travelers = document.createElement('p');
+      travelers.textContent = '👥 Travelers: ' + (trip.travelers || 1);
+
+      const budget = document.createElement('p');
+      budget.textContent =
+        '💰 Budget: ₹' +
+        Number(trip.budget || 0).toLocaleString('en-IN');
+
+      const notes = document.createElement('p');
+      notes.textContent = '📝 Notes: ' + (trip.notes || 'No notes added.');
+
+      const fullDetails = document.createElement('div');
+      fullDetails.hidden = true;
+      fullDetails.className = 'full-trip-details';
+
+      const itineraryTitle = document.createElement('h4');
+      itineraryTitle.textContent = '🗺️ Trip Details & Itinerary';
+
+      const itinerary = document.createElement('p');
+      itinerary.style.whiteSpace = 'pre-line';
+      itinerary.textContent = trip.notes ||
+        'No itinerary has been added to this trip yet.';
+
+      const info = document.createElement('p');
+      info.textContent =
+        'Destination: ' + trip.destination +
+        '\nDeparture: ' + (trip.start_date || 'Not set') +
+        '\nReturn: ' + (trip.end_date || 'Not set') +
+        '\nTravelers: ' + (trip.travelers || 1) +
+        '\nBudget: ₹' + Number(trip.budget || 0).toLocaleString('en-IN');
+
+      fullDetails.append(info, itineraryTitle, itinerary);
+
+      const viewBtn = document.createElement('button');
+      viewBtn.type = 'button';
+      viewBtn.className = 'btn btn-primary';
+      viewBtn.textContent = '👁️ View Full Details';
+
+      viewBtn.addEventListener('click', () => {
+        fullDetails.hidden = !fullDetails.hidden;
+        viewBtn.textContent = fullDetails.hidden
+          ? '👁️ View Full Details'
+          : 'Hide Details';
+      });
+
+      const del = document.createElement('button');
+      del.type = 'button';
+      del.className = 'delete-trip';
+      del.textContent = '🗑️ Delete Trip';
+
+      del.addEventListener('click', async () => {
+        if (!confirm('Are you sure you want to delete this trip?')) return;
+
+        try {
+          await api('/api/trips/' + trip.id, { method: 'DELETE' });
+          showToast('Trip deleted successfully.');
+          await loadTrips();
+        } catch (err) {
+          showToast(err.message);
+        }
+      });
+
+      card.append(
+        title,
+        details,
+        travelers,
+        budget,
+        notes,
+        viewBtn,
+        fullDetails,
+        del
+      );
+
+      box.appendChild(card);
+    });
+  } catch (err) {
+    showToast(err.message);
+  }
+}
+```
+
 $('menuToggle').addEventListener('click',()=>$('mainNav').classList.toggle('open'));
 document.querySelectorAll('#mainNav a').forEach(a=>a.addEventListener('click',()=>$('mainNav').classList.remove('open')));
 $('accountDialog').addEventListener('click',e=>{if(e.target===$('accountDialog'))$('accountDialog').close()});
