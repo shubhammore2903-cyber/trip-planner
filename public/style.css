@@ -50,3 +50,34 @@ input,select,textarea{accent-color:#0878e8}button:focus-visible,a:focus-visible,
 .map-actions{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 18px}
 #mapFrame{display:block;width:100%;height:360px;border:0;border-radius:16px;background:#edf3fa}
 @media(max-width:600px){.maps-panel{padding:14px}.maps-search .btn{width:100%}#mapFrame{height:280px}}
+
+/* Clean, simple homepage refresh — keeps existing IDs and JavaScript behavior intact */
+:root{--navy:#142b45;--blue:#1769d2;--muted:#66758a;--line:#e5ebf2}
+body{background:#f7f9fc;color:#142b45;font-size:15px}
+.topbar{height:auto;min-height:76px;padding:12px clamp(18px,4vw,56px);gap:22px;border-bottom:1px solid #e8edf3;box-shadow:0 4px 18px rgba(20,43,69,.04)}
+.brand-mark{width:40px;height:40px;clip-path:none;border-radius:12px;background:#1769d2;font-size:22px}
+.brand strong{font-size:21px;letter-spacing:-.5px}.brand small{font-size:10px;color:#718096}
+.topbar nav{gap:17px}.topbar nav a{font-size:12px;color:#506176}.topbar nav a.active:after{bottom:14px}
+.account-actions{gap:7px}.btn{border-radius:10px;padding:11px 15px;font-size:12px;box-shadow:none}.btn:hover{transform:translateY(-1px);box-shadow:0 6px 16px rgba(23,105,210,.14)}
+.btn-primary{background:#1769d2}.btn-light{background:#fff;border:1px solid #dce5ef;color:#30445b}
+.hero{min-height:0;padding:52px clamp(22px,7vw,100px) 34px;background:linear-gradient(120deg,#eaf3ff 0%,#f5f9ff 55%,#e8f5ff 100%);color:#142b45;align-items:flex-start;gap:0}
+.hero-shade{display:none}.hero-content{max-width:760px}.hero .eyebrow{display:block;color:#1769d2;opacity:1;font-size:11px;letter-spacing:1.5px;margin:0 0 12px}
+.hero h1{font-size:clamp(36px,4.5vw,58px);line-height:1.06;letter-spacing:-1.8px;margin:0 0 14px;color:#142b45}
+.hero-copy{font-size:15px;line-height:1.75;color:#5c6d82;max-width:590px}
+.search-panel{max-width:1160px;margin-top:28px;border:1px solid #e3eaf3;border-radius:16px;padding:12px;box-shadow:0 12px 35px rgba(25,56,92,.08);min-height:82px}
+.search-field{padding:7px 13px}.field-icon{color:#1769d2}.field-content b{font-size:11px;color:#314760}.field-content input,.field-content select{font-size:12px;color:#5c6d82}
+.search-button{border-radius:10px;margin-left:6px}
+.features{padding:26px clamp(22px,6vw,82px);grid-template-columns:repeat(5,minmax(0,1fr));gap:22px;border-bottom:1px solid #edf1f6}
+.feature{align-items:flex-start;gap:11px}.feature-icon{width:40px;height:40px;border-radius:12px;font-size:19px}.feature h3{font-size:12px;white-space:normal;color:#243b55}.feature p{font-size:11px;line-height:1.55;color:#738196}
+.content-grid{max-width:1320px;grid-template-columns:minmax(0,1.8fr) minmax(290px,.85fr);gap:24px;padding-top:30px}
+.destinations-section{background:transparent;padding:0 0 18px}.section-heading{margin-bottom:17px}.section-heading h2{font-size:25px;letter-spacing:-.7px;color:#172f4a}.section-heading p{font-size:12px;color:#758398}.text-link{font-size:12px}
+.destination-grid{gap:16px}.destination-card{border:1px solid #e5ebf2;border-radius:14px;box-shadow:0 5px 18px rgba(20,43,69,.06);min-height:210px}.destination-image{height:210px;transition:transform .25s}.destination-card:hover .destination-image{transform:scale(1.025)}.card-bottom{padding:38px 13px 13px}.card-bottom h3{font-size:13px}.card-bottom p{font-size:10px}.price{font-size:10px}.price strong{font-size:14px}.card-action{opacity:1;position:static;width:100%;border-radius:0;padding:12px;border-top:1px solid #e8edf4;background:#fff;color:#1769d2}
+.itinerary-card{border:1px solid #e5ebf2;border-radius:15px;box-shadow:0 5px 20px rgba(20,43,69,.05);padding:18px}.compact h2{font-size:16px}.itinerary-cover{height:100px;border-radius:11px}.timeline-item{min-height:64px}.timeline-copy h3{font-size:12px}.timeline-copy p{font-size:10px}.full-width{border-radius:10px}
+.adventure-banner{border-radius:15px;min-height:150px;margin-top:20px}.banner-content h2{font-size:23px}.extra-sections{max-width:1320px;margin:35px auto;padding-top:15px}.extra-card{border-radius:14px;border-color:#e5ebf2;box-shadow:0 4px 14px rgba(20,43,69,.03)}
+.planner-tools{max-width:1320px;margin-left:auto;margin-right:auto}.guide-card,.place-card,.budget-section,.checklist-section,.maps-panel{border-radius:14px}
+.my-trips-section{border:1px solid #e5ebf2;box-shadow:0 5px 18px rgba(20,43,69,.04)}
+footer{border-top:1px solid #e6ecf3;color:#77869a}
+@media(max-width:1150px){.topbar{gap:12px}.topbar nav{gap:10px}.topbar nav a{font-size:11px}.features{grid-template-columns:repeat(3,minmax(0,1fr))}.content-grid{grid-template-columns:minmax(0,1.4fr) minmax(280px,1fr)}}
+@media(max-width:800px){.topbar{padding:11px 15px;min-height:68px}.hero{padding:38px 20px 25px;min-height:0}.hero h1{font-size:39px}.hero-copy{font-size:13px}.search-panel{margin-top:23px}.features{padding:22px 18px;grid-template-columns:repeat(2,minmax(0,1fr))}.content-grid{padding:24px 17px 0;gap:20px}.destination-image{height:165px}.destination-card{min-height:0}.extra-sections{margin-top:25px}.account-actions .btn{font-size:10px;padding:9px 10px}}
+@media(max-width:560px){.brand strong{font-size:17px}.brand small{display:none}.hero{padding:32px 16px 20px}.hero h1{font-size:34px;letter-spacing:-1px}.hero-copy{font-size:13px}.search-panel{grid-template-columns:1fr}.search-field{border-right:0;border-bottom:1px solid #edf1f6;padding:12px 9px}.search-field:last-of-type{border-bottom:0}.search-button{grid-column:auto;width:100%;margin:5px 0 0}.features{grid-template-columns:1fr 1fr;gap:17px 12px}.feature-icon{width:36px;height:36px}.content-grid{padding:22px 12px 0}.destination-grid{grid-template-columns:1fr 1fr}.destination-image{height:150px}.card-bottom{padding:30px 9px 9px}.card-bottom h3{font-size:11px}.price strong{font-size:12px}.extra-sections{grid-template-columns:1fr 1fr;padding-inline:12px}.itinerary-card{padding:14px}}
+@media(max-width:390px){.destination-grid{grid-template-columns:1fr}.destination-image{height:190px}.features{grid-template-columns:1fr}}
