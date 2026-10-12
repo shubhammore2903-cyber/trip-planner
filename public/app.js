@@ -28,7 +28,7 @@ $('tripSearch').addEventListener('submit',e=>{e.preventDefault();const query=$('
 $('viewAll').addEventListener('click',e=>{e.preventDefault();$('destinationInput').value='';$('budget').value='any';document.querySelectorAll('.destination-card').forEach(c=>c.hidden=false);$('noResults').hidden=true});
 document.querySelectorAll('.card-action').forEach(btn=>btn.addEventListener('click',()=>{const name=btn.dataset.destination;$('destinationInput').value=name;$('itineraryTitle').textContent=name+' Adventure';$('itineraryMeta').textContent='5 Days · 4 Nights · '+$('travelers').selectedOptions[0].textContent;$('itinerary').scrollIntoView({behavior:'smooth'});showToast(name+' selected. Click Save This Trip to save it to your account.')}));
 $('viewItinerary').addEventListener('click',e=>{e.preventDefault();showToast('Sample itinerary: arrival, sightseeing, adventure, local visits and departure.')});
-$('myTripsBtn').addEventListener('click',async()=>{const user=await checkUser();if(!user){openAccount('login');return} $('myTripsSection').hidden=false;await loadTrips();$('myTripsSection').scrollIntoView({behavior:'smooth'})});
+$('myTripsBtn').addEventListener('click',async()=>{
 ```js
 async function loadTrips(){
   try {
