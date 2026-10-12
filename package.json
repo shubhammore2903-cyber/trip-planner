@@ -1,0 +1,16 @@
+{
+  "name": "trip-planner-full-project",
+  "version": "1.0.0",
+  "description": "Full-stack Trip Planner website with Express, SQLite, user accounts, and saved trips",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "express": "^4.21.2",
+    "express-session": "^1.18.1",
+    "sql.js": "^1.13.0"
+  }
+}

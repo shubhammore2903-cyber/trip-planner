@@ -1,0 +1,15 @@
+TRIP PLANNER KO INTERNET PAR LIVE KARNE KE STEPS
+
+Yeh ZIP hosting ke liye prepare ki gayi hai. Main aapke Render/GitHub account mein login karke deploy nahi kar sakta; account ke andar aapko neeche ke steps karne honge.
+
+1. Is ZIP ko extract karein.
+2. GitHub.com par account banayein/login karein. New repository banayein, naam trip-planner rakhein. Repository public ya private rakh sakte hain.
+3. Extracted project ki saari files/folders repository mein upload karein. render.yaml aur package.json project ke root mein hone chahiye. Data/database file upload na karein.
+4. Render.com par sign up/login karein aur New + > Blueprint choose karein. GitHub repository connect karke deploy karein. render.yaml settings ko Render read karega.
+5. Deployment complete hone par Render ek https://...onrender.com address dega. Use browser mein kholkar test karein.
+
+IMPORTANT:
+- Is configuration mein persistent disk ke liye paid Render Starter service chahiye ho sakti hai. Deploy se pehle Render ke current price/plan ko check karein. Agar payment nahi karna chahte, pehle free demo deploy kar sakte hain, lekin local SQLite data restart/redeploy par lose ho sakta hai.
+- Real hotel bookings/payments nahi hote; hotel links Google Maps par search karte hain.
+- API key secrets GitHub par kabhi upload na karein.
+- SESSION_SECRET Render automatically generate karega.

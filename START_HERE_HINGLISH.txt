@@ -1,0 +1,15 @@
+TRIP PLANNER — START HERE (HINGLISH)
+
+1) ZIP file ko extract karein.
+2) Extract hue folder ko VS Code mein open karein. Dhyan rahe: package.json isi folder mein dikhna chahiye.
+3) VS Code mein Terminal > New Terminal par click karein.
+4) Ye command chalayein: npm.cmd install
+5) Install poora ho jaaye to ye command chalayein: npm.cmd start
+6) Browser mein ye address kholein: http://localhost:5000
+7) Website use karte waqt terminal band na karein. Band ho gaya ho to npm.cmd start dobara chalayein.
+
+IS VERSION MEIN: Login/Signup, saved trips, destination search, Google Maps, directions, hotels search, budget calculator, itinerary generator, checklist aur professional responsive design.
+
+Agar 'package.json not found' error aaye, to VS Code mein sahi extracted folder open karein. Purane project ka data chahiye to uska data folder delete na karein. Is ZIP ko alag naye folder mein chalana sabse safe hai.
+
+NOTE: Hotel search Google Maps par khulta hai; app khud payment ya confirmed booking nahi karta. Dikhaye gaye rates sample estimates hain. Website ko internet par live karne ke liye alag hosting setup aur database ke liye persistent storage chahiye.
